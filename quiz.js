@@ -1,215 +1,154 @@
-// 題庫 (範例題目，請依需求擴充)
+// 文法與詞彙題目（多益/托福混合，含解析與錯誤類型）
 const questions = [
+    // TOEIC Grammar/Vocab
     {
         type: 'toeic',
-        question: "What does the word 'annual' mean?",
-        options: [
-            "Happening every year",
-            "Very expensive",
-            "Unusual",
-            "Related to animals"
-        ],
-        answer: 0,
-        explanation: "‘Annual’ means happening every year. For example, an annual meeting is held once every year.",
-        errorType: "Vocabulary misunderstanding"
-    },
-    {
-        type: 'toefl',
-        question: "In the passage, what is the main purpose of the experiment described?",
-        options: [
-            "To prove a theory",
-            "To test a hypothesis",
-            "To describe a process",
-            "To compare results"
-        ],
-        answer: 1,
-        explanation: "The experiment is designed to test a hypothesis, as stated in the passage.",
-        errorType: "Purpose identification"
-    },
-    {
-        type: 'toeic',
-        question: "Choose the correct sentence.",
-        options: [
-            "He go to work every day.",
-            "He goes to work every day.",
-            "He going to work every day.",
-            "He gone to work every day."
-        ],
-        answer: 1,
-        explanation: "‘He goes to work every day.’ is correct. The verb needs an 's' for third person singular present tense.",
-        errorType: "Grammar tense"
-    },
-    {
-        type: 'toefl',
-        question: "What can be inferred from the passage?",
-        options: [
-            "The author disagrees with the results.",
-            "The results were unexpected.",
-            "The experiment failed.",
-            "The method was incorrect."
-        ],
-        answer: 1,
-        explanation: "The passage suggests the results were unexpected, as the outcome surprised the researchers.",
-        errorType: "Inference"
-    },
-    {
-        type: 'toeic',
-        question: "Which is closest in meaning to 'mandatory'?",
-        options: [
-            "Optional",
-            "Required",
-            "Unlikely",
-            "Temporary"
-        ],
-        answer: 1,
-        explanation: "‘Mandatory’ means required or compulsory.",
-        errorType: "Vocabulary"
-    },
-    {
-        type: 'toefl',
-        question: "Why does the author mention 'climate change' in the passage?",
-        options: [
-            "To introduce a new topic",
-            "To provide an example",
-            "To contradict a previous statement",
-            "To summarize the main idea"
-        ],
-        answer: 1,
-        explanation: "The mention of 'climate change' serves as an example supporting the main argument.",
-        errorType: "Supporting detail"
-    },
-    {
-        type: 'toeic',
-        question: "The meeting has been postponed ____ next week.",
-        options: [
-            "at",
-            "in",
-            "to",
-            "on"
-        ],
+        question: "The meeting has been postponed ____ next Monday.",
+        options: ["at", "in", "to", "on"],
         answer: 2,
-        explanation: "‘Postponed to next week’ is the correct preposition usage.",
+        explanation: "‘Postponed to next Monday’ is the correct preposition usage. 'To' is used to indicate the new time.",
         errorType: "Preposition"
     },
     {
-        type: 'toefl',
-        question: "What does the author imply about the new policy?",
-        options: [
-            "It is controversial",
-            "It is widely accepted",
-            "It is temporary",
-            "It is not effective"
-        ],
-        answer: 0,
-        explanation: "The author implies the policy is controversial by mentioning the debates surrounding it.",
-        errorType: "Implied meaning"
-    },
-    {
         type: 'toeic',
-        question: "Which sentence is correct?",
-        options: [
-            "She have finished her work.",
-            "She has finished her work.",
-            "She finishing her work.",
-            "She finish her work."
-        ],
+        question: "Jeffery Wong is an extremely innovative employee who has come ____ some very profitable ideas.",
+        options: ["over", "with", "to", "at"],
         answer: 1,
-        explanation: "‘She has finished her work.’ uses the correct present perfect tense.",
-        errorType: "Tense"
-    },
-    {
-        type: 'toefl',
-        question: "According to the passage, what is the main reason for migration?",
-        options: [
-            "Economic opportunities",
-            "Political instability",
-            "Climate change",
-            "Cultural exchange"
-        ],
-        answer: 0,
-        explanation: "The passage states economic opportunities as the main reason for migration.",
-        errorType: "Main idea"
+        explanation: "The phrase is 'come up with ideas', meaning to invent or create ideas.",
+        errorType: "Collocation"
     },
     {
         type: 'toeic',
-        question: "If you need assistance, please ____ the help desk.",
-        options: [
-            "contact",
-            "contacts",
-            "contacting",
-            "contacted"
-        ],
+        question: "Good telephone ____ are essential for all our receptionists.",
+        options: ["reactions", "comments", "opinions", "manners"],
+        answer: 3,
+        explanation: "'Manners' refers to polite or appropriate behavior, which is essential for receptionists.",
+        errorType: "Vocabulary"
+    },
+    {
+        type: 'toeic',
+        question: "The new site will ____ the exchange of data between branches.",
+        options: ["encourage", "encouraged", "encouraging", "encouragement"],
         answer: 0,
-        explanation: "‘Please contact the help desk.’ uses the base form after ‘please’.",
+        explanation: "The verb 'will' should be followed by the base form 'encourage'.",
         errorType: "Verb form"
     },
     {
+        type: 'toeic',
+        question: "Ms. Juárez placed the ad in a magazine that has a wide ____ among our target audience.",
+        options: ["circulation", "calculation", "organization", "administration"],
+        answer: 0,
+        explanation: "'Circulation' refers to the number of copies distributed, which fits the context.",
+        errorType: "Vocabulary"
+    },
+    // TOEFL Grammar/Vocab
+    {
         type: 'toefl',
-        question: "What is the author's attitude toward the solution proposed?",
+        question: "Despite ____ hard, he failed the exam.",
+        options: ["to study", "studied", "studying", "study"],
+        answer: 2,
+        explanation: "'Despite' is followed by a noun or gerund, so 'studying' is correct.",
+        errorType: "Gerund/Participle"
+    },
+    {
+        type: 'toefl',
+        question: "Choose the grammatically correct sentence.",
         options: [
-            "Supportive",
-            "Neutral",
-            "Skeptical",
-            "Unaware"
+            "She don't like coffee.",
+            "She doesn't likes coffee.",
+            "She doesn't like coffee.",
+            "She not likes coffee."
         ],
         answer: 2,
-        explanation: "The author expresses skepticism by questioning the effectiveness of the solution.",
-        errorType: "Author attitude"
+        explanation: "'She doesn't like coffee.' is correct. Use 'doesn't' + base verb.",
+        errorType: "Negative structure"
+    },
+    {
+        type: 'toefl',
+        question: "If I ____ more time, I would travel the world.",
+        options: ["have", "had", "will have", "has"],
+        answer: 1,
+        explanation: "This is a second conditional. Use 'If I had... I would...'.",
+        errorType: "Conditional"
+    },
+    {
+        type: 'toefl',
+        question: "He is ____ than his brother.",
+        options: ["more tall", "taller", "tallest", "most tall"],
+        answer: 1,
+        explanation: "Comparative form for 'tall' is 'taller'.",
+        errorType: "Comparative"
+    },
+    {
+        type: 'toefl',
+        question: "The report must be submitted ____ Friday.",
+        options: ["in", "at", "on", "to"],
+        answer: 2,
+        explanation: "'On Friday' is correct for days of the week.",
+        errorType: "Preposition"
+    },
+    // TOEIC Grammar/Vocab
+    {
+        type: 'toeic',
+        question: "Successful companies share certain common ____.",
+        options: ["character", "characterize", "characterizing", "characteristics"],
+        answer: 3,
+        explanation: "'Characteristics' is the noun meaning features or qualities.",
+        errorType: "Word form"
     },
     {
         type: 'toeic',
-        question: "Which is the best synonym for 'efficient'?",
-        options: [
-            "Effective",
-            "Wasteful",
-            "Slow",
-            "Expensive"
-        ],
-        answer: 0,
-        explanation: "‘Efficient’ means effective and productive.",
+        question: "The company accountant, ____ office is on the fourth floor, is very experienced.",
+        options: ["who", "whose", "what", "where"],
+        answer: 1,
+        explanation: "'Whose' is the possessive relative pronoun referring to 'accountant's office'.",
+        errorType: "Relative pronoun"
+    },
+    {
+        type: 'toeic',
+        question: "Our new line of household appliances is ____ priced.",
+        options: ["conditionally", "eligibly", "affordably", "uncertainly"],
+        answer: 2,
+        explanation: "'Affordably' means priced so that people can afford them.",
         errorType: "Vocabulary"
     },
     {
+        type: 'toeic',
+        question: "The design team has provided ____ suggestions for the new product.",
+        options: ["value", "valued", "valuable", "valuably"],
+        answer: 2,
+        explanation: "'Valuable' is the correct adjective to describe suggestions.",
+        errorType: "Adjective usage"
+    },
+    {
         type: 'toefl',
-        question: "What does the word 'subsequent' mean in the passage?",
+        question: "Which sentence is correct?",
         options: [
-            "Previous",
-            "Following",
-            "Unrelated",
-            "Simultaneous"
+            "He have finished his homework.",
+            "He has finished his homework.",
+            "He finishing his homework.",
+            "He finish his homework."
         ],
         answer: 1,
-        explanation: "‘Subsequent’ means following or coming after.",
-        errorType: "Vocabulary"
-    },
-    {
-        type: 'toeic',
-        question: "The report must be submitted ____ Friday.",
-        options: [
-            "in",
-            "at",
-            "on",
-            "to"
-        ],
-        answer: 2,
-        explanation: "‘On Friday’ is the correct preposition for days of the week.",
-        errorType: "Preposition"
+        explanation: "'He has finished his homework.' uses the correct present perfect tense.",
+        errorType: "Tense"
     }
 ];
 
 // UI/UX 十大原則對應提示
 const uxTips = {
-    "Vocabulary misunderstanding": "建議多閱讀英文文章並整理常見單字，遇到不懂的詞可查字典並記錄。",
-    "Purpose identification": "練習找出題目或段落的主旨與目的，常見於托福閱讀。",
-    "Grammar tense": "複習英文時態規則，特別是第三人稱單數與完成式。",
-    "Inference": "多練習推論題，從上下文找線索。",
     "Preposition": "熟悉常用介系詞搭配，建議做題時歸納錯誤。",
-    "Implied meaning": "學會辨識作者立場與隱含意義，托福常考。",
-    "Supporting detail": "練習找出細節如何支持主旨。",
-    "Tense": "注意動詞時態與主詞一致性。",
-    "Main idea": "練習快速抓住段落主旨。",
-    "Verb form": "熟悉動詞變化與正確用法。",
-    "Author attitude": "托福閱讀常問作者態度，需從語氣或修飾詞判斷。"
+    "Collocation": "多閱讀英文例句，熟悉常見動詞與介系詞的固定搭配。",
+    "Vocabulary": "建議多閱讀英文文章並整理常見單字，遇到不懂的詞可查字典並記錄。",
+    "Verb form": "注意助動詞後應接原形動詞。",
+    "Gerund/Participle": "記住介系詞與特定連接詞後常接動名詞（V-ing）。",
+    "Negative structure": "否定句需用助動詞+原形動詞，注意主詞與助動詞一致性。",
+    "Conditional": "第二條件句為if+過去式，would+原形動詞。",
+    "Comparative": "形容詞比較級規則需熟記，短字尾加-er。",
+    "Word form": "根據句意選擇正確詞性（名詞/動詞/形容詞）。",
+    "Relative pronoun": "關係代名詞需與先行詞性質相符。",
+    "Adjective usage": "形容詞修飾名詞，副詞修飾動詞或形容詞。",
+    "Tense": "注意動詞時態與主詞一致性。"
 };
 
 // 隨機排列題目
