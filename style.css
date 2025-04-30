@@ -1,180 +1,146 @@
-/* 動態霓虹漸層背景 */
 body, html {
     height: 100%;
     margin: 0;
-    padding: 0;
-    font-family: 'Noto Sans TC', 'Segoe UI', Arial, sans-serif;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
     background: transparent;
     min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
 }
 
 .gradient-bg {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: -1;
-    background: linear-gradient(-45deg, #ff3c3c, #ffa940, #40a9ff, #36d399);
-    background-size: 400% 400%;
-    animation: gradient-anim 15s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(120deg, #ff1744, #2979ff);
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease-in-out infinite;
+    filter: blur(0px) brightness(1.1) saturate(1.2);
 }
 
-@keyframes gradient-anim {
+@keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* 扁平化設計 */
-main {
-    max-width: 720px;
-    margin: 40px auto;
-    background: rgba(255,255,255,0.93);
-    border-radius: 18px;
-    padding: 32px 20px 24px 20px;
-    box-sizing: border-box;
+.card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 1.5rem;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-h1 {
-    margin: 0 0 8px 0;
-    font-size: 2.2rem;
-    color: #222;
-    letter-spacing: 2px;
-}
-
-.subtitle {
-    color: #888;
-    font-size: 1.1rem;
-}
-
-#score-section {
-    margin-bottom: 24px;
-    transition: max-height 0.5s;
-}
-
-.score-card {
-    display: flex;
-    justify-content: space-around;
-    background: #fff6e0;
-    border-radius: 12px;
-    padding: 12px 0;
-    font-size: 1.12rem;
-    color: #d46b08;
+#score-summary {
+    font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 8px;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: linear-gradient(90deg, #ff1744 10%, #2979ff 90%);
+    color: #fff;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 12px 0 rgba(41,121,255,0.08);
 }
 
-#quiz-form {
-    width: 100%;
+#error-statistics {
+    font-size: 1.05rem;
+    background: #fffbe9;
+    border-left: 5px solid #ffb300;
+    border-radius: 0.7rem;
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #7a5600;
+    display: none;
 }
 
-#question-list {
-    list-style: decimal inside;
-    padding: 0;
-    margin: 0 0 20px 0;
-}
-
-.question-card {
-    background: #f6f8fa;
-    border-radius: 10px;
-    margin-bottom: 18px;
-    padding: 18px 14px 12px 14px;
+.question-block {
+    margin-bottom: 2.5rem;
+    padding: 1.2rem 1rem;
+    border-radius: 1rem;
+    background: #f7f7fa;
+    box-shadow: 0 1px 4px rgba(41,121,255,0.03);
     transition: background 0.3s;
-    position: relative;
-}
-
-.question-card.correct {
-    border-left: 6px solid #52c41a;
-    background: #f6fff6;
-}
-
-.question-card.incorrect {
-    border-left: 6px solid #ff4d4f;
-    background: #fff6f6;
+    border: 2px solid transparent;
 }
 
 .question-title {
-    font-size: 1.08rem;
-    margin-bottom: 10px;
-    color: #222;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
 }
 
 .options {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
 .option-label {
-    padding: 7px 12px;
-    border-radius: 6px;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0.55rem 0.9rem;
+    border-radius: 0.7rem;
     background: #fff;
-    border: 1.5px solid #e0e0e0;
-    transition: border 0.2s, background 0.2s;
-    font-size: 1rem;
-}
-
-input[type="radio"]:checked + .option-label {
-    border: 2px solid #1890ff;
-    background: #e6f7ff;
-}
-
-.explain-block {
-    margin-top: 10px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    background: #f0f5ff;
-    color: #1d39c4;
-    font-size: 0.98rem;
-    border-left: 3px solid #1890ff;
-}
-
-.explain-block.correct {
-    background: #f6fff6;
-    color: #237804;
-    border-left: 3px solid #52c41a;
-}
-
-.explain-block.incorrect {
-    background: #fff6f6;
-    color: #a8071a;
-    border-left: 3px solid #ff4d4f;
-}
-
-.submit-btn {
-    width: 100%;
-    background: linear-gradient(90deg, #ff7875 0%, #40a9ff 100%);
-    color: #fff;
-    font-size: 1.15rem;
-    border: none;
-    border-radius: 8px;
-    padding: 14px 0;
-    margin-top: 16px;
     cursor: pointer;
-    font-weight: 700;
-    letter-spacing: 1px;
-    transition: background 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
+    font-weight: 500;
+    transition: border 0.2s, background 0.2s;
+    margin-bottom: 0;
+    min-height: 44px;
 }
 
-.submit-btn:hover {
-    background: linear-gradient(90deg, #ff4d4f 0%, #1890ff 100%);
-    box-shadow: 0 2px 6px rgba(64,169,255,0.08);
+.option-label input[type="radio"] {
+    accent-color: #2979ff;
+    margin-right: 0.7rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    flex-shrink: 0;
+    width: 1.1em;
+    height: 1.1em;
 }
 
-.hidden {
-    display: none;
+.option-label.selected {
+    border-color: #2979ff;
+    background: #e3f0ff;
+}
+
+.option-label.correct {
+    border: 2px solid #43e97b !important;
+    background: #e7fbe9 !important;
+    color: #297900;
+}
+
+.option-label.incorrect {
+    border: 2px solid #ff1744 !important;
+    background: #fff1f2 !important;
+    color: #b71c1c;
+}
+
+.result-feedback {
+    margin-top: 0.7rem;
+}
+
+.explanation {
+    margin-top: 0.5rem;
+    padding: 0.7rem 1rem;
+    border-radius: 0.7rem;
+    font-size: 0.98rem;
+    background: #f4faff;
+    border-left: 4px solid #2979ff;
+}
+
+.analysis {
+    margin-top: 0.4rem;
+    padding: 0.6rem 1rem;
+    border-radius: 0.7rem;
+    font-size: 0.97rem;
+    background: #fffbe9;
+    border-left: 4px solid #ffb300;
 }
 
 @media (max-width: 600px) {
-    main {
-        padding: 12px 2vw;
-    }
-    .score-card {
-        flex-direction: column;
-        gap: 8px;
-    }
+    .card-body { padding: 1.2rem; }
+    .question-block { padding: 0.9rem 0.5rem; }
+    .option-label { font-size: 1rem; padding: 0.55rem 0.65rem; }
 }
