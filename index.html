@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>簡易英文測驗（TOEIC/TOEFL）</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="gradient-bg"></div>
+<main>
+    <header>
+        <h1>英文能力測驗</h1>
+        <p class="subtitle">TOEIC &amp; TOEFL 練習｜共 15 題</p>
+    </header>
+    <section id="score-section" class="hidden">
+        <div class="score-card">
+            <div>
+                <span>多益預估：</span><span id="toeic-score">0</span> / 990
+            </div>
+            <div>
+                <span>托福預估：</span><span id="toefl-score">0</span> / 120
+            </div>
+            <div>
+                <span>正確題數：</span><span id="correct-count">0</span> / 15
+            </div>
+        </div>
+    </section>
+    <form id="quiz-form">
+        <ol id="question-list"></ol>
+        <button type="submit" class="submit-btn">送出答案</button>
+    </form>
+</main>
+<script src="quiz.js"></script>
+</body>
+</html>
